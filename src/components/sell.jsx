@@ -14,63 +14,33 @@ export function AddProduct() {
   const [file3, setfile3] = useState("");
   const [file4, setfile4] = useState("");
   const [file5, setfile5] = useState("");
-  const [prices, setprices] = useState(null);
+  const [prices1, setprices1] = useState(null);
+  const [prices2, setprices2] = useState(null);
+  const [prices3, setprices3] = useState(null);
   const [title, settitle] = useState("");
   const [description, setdescription] = useState("");
   const [loading, setloading] = useState(false);
   const [category, setcategory] = useState("Categories");
   const [categories, setcategories] = useState();
   const [highlight, sethighlight] = useState(false);
-  const [color, setcolor] = useState("");
-  const [color2, setcolor2] = useState("");
-  const [color3, setcolor3] = useState("");
-  const [color4, setcolor4] = useState("");
-  const [color5, setcolor5] = useState("");
-
-  // settop()
-
-  function setHigh () {
-    sethighlight(!highlight)
-  }
-
-  // const [values, setvalues] = useState({
-  //   title: "",
-  //   description: "",
-  //   price: Number(0),
-  //   category: "Categories",
-  //   location: "Location",
-  //   Highlight: false,
-  // });
-
-  // console.log(values.price)
+  const [size1, setsize1] = useState("");
+  const [size2, setsize2] = useState("");
+  const [size3, setsize3] = useState("");
 
   const [errors, seterrors] = useState({});
 
-  // const handleChange = (event) => {
-  //   setvalues({
-  //     ...values,
-  //     [event.target.name]: event.target.value,
-  //   });
-  // };
-
   const validateForm = () => {
     let tempErrors = {};
-    if (category === "Categories") {
-      tempErrors.category = "Please select a Category";
-    }
     if (!isfile) {
       tempErrors.file1 = "Please select a title Picture";
     }
     if (!title) {
       tempErrors.title = "Please add a title";
     }
-    if (!description) {
-      tempErrors.description = "Please input a description for the product";
-    }
-    if (!prices) {
+    if (!prices1) {
       tempErrors.price = "Please input a price for the product";
     }
-    if (isNaN(prices)) {
+    if (isNaN(prices1)) {
       tempErrors.price = "Please input a number";
     }
     seterrors(tempErrors);
@@ -82,15 +52,15 @@ export function AddProduct() {
   const upload = async () => {
     setloading(true)
     const docRef = await addDoc(collection(db, "Products"), {
-      color: color,
-      color2: color2,
-      color3: color3,
-      color4: color4,
-      color5: color5,
+      size1: size1,
+      size2: size2,
+      size3: size3,
       title: title,
       description: description,
-      price: Number(prices),
-      // userId: user?.uid,
+      price1: Number(prices1),
+      price2: Number(prices2),
+      price3: Number(prices3),
+      userId: user?.uid,
       AprilSales: highlight,
       category: category,
       searchKeywords:
@@ -205,44 +175,8 @@ export function AddProduct() {
           <div className="flex flex-col items-center">
             <form
               onSubmit={handleSubmit}
-              className="w-[90%] bg-[#ffea00] mb-[2rem] rounded-[10px] flex flex-col px-[1rem] pb-[2.5rem]"
+              className="w-[90%] bg-[#fc5810] text-white mb-[2rem] rounded-[10px] flex flex-col px-[1rem] pb-[2.5rem]"
             >
-               <div
-                onClick={() => {
-                  setcategories(!categories);
-                }}
-                className="flex mt-[2rem] px-[1rem] justify-between border py-[0.5rem] rounded-[10px] items-center bg-white"
-              >
-                <p>{category}</p>
-                <p>&#8964;</p>
-              </div>
-              {errors.category && <p className="error">{errors.category}</p>}
-
-              {categories ? (
-                <div className="flex flex-col items-center mt-[1rem] bg-blue-300 py-[1rem] rounded-[10px]">
-                  <p
-                    onClick={() => {
-                      setcategories(false);
-                      setcategory("Fusion Bags");
-                    }}
-                    className="w-[100%] text-center pb-[0.5rem]"
-                  >
-                    Fusion Bags
-                  </p>
-                  <p
-                    onClick={() => {
-                      setcategories(false);
-                      setcategory("Fusion Shoes");
-                    }}
-                    className="border-b-[2px] border-t-[2px] w-[100%] text-center py-[0.5rem]"
-                  >
-                   Fusion Shoes
-                  </p>
-                </div>
-              ) : (
-                ""
-              )}
-
               <div className="mt-[2rem]">
                 <h2>Add photo</h2>
                 <p className="text-[12px] mt-[1rem]">
@@ -317,7 +251,7 @@ export function AddProduct() {
 
 
               <input
-                className="mt-[1rem] py-[0.5rem] rounded-[10px] px-[1rem]"
+                className="mt-[1rem] py-[0.5rem] text-black rounded-[10px] px-[1rem]"
                 type="text"
                 placeholder="TITLE*"
                 name="title"
@@ -327,90 +261,23 @@ export function AddProduct() {
               />
               {errors.title && <p className="error">{errors.title}</p>}
               <input
-                className="mt-[1rem] py-[0.5rem] rounded-[10px] px-[1rem]"
+                className="mt-[1rem] py-[0.5rem] text-black rounded-[10px] px-[1rem]"
                 type="text"
-                placeholder="color 1"
-                name="color1"
-                onChange={(e) => {setcolor(e.target.value)}}
+                placeholder="size"
+                name="size1"
+                onChange={(e) => {setsize1(e.target.value)}}
                 // value={values.title}
                 // {...register("title")}
               />
-
-<input
-                className="mt-[1rem] py-[0.5rem] rounded-[10px] px-[1rem]"
-                type="text"
-                placeholder="color 2"
-                name="color2"
-                onChange={(e) => {setcolor2(e.target.value)}}
-                // value={values.title}
-                // {...register("title")}
-              />
-
-              
-<input
-                className="mt-[1rem] py-[0.5rem] rounded-[10px] px-[1rem]"
-                type="text"
-                placeholder="color 3"
-                name="color3"
-                onChange={(e) => {setcolor3(e.target.value)}}
-                // value={values.title}
-                // {...register("title")}
-              />
-
-              
-<input
-                className="mt-[1rem] py-[0.5rem] rounded-[10px] px-[1rem]"
-                type="text"
-                placeholder="color 4"
-                name="color4"
-                onChange={(e) => {setcolor4(e.target.value)}}
-                // value={values.title}
-                // {...register("title")}
-              />
-
-              
-<input
-                className="mt-[1rem] py-[0.5rem] rounded-[10px] px-[1rem]"
-                type="text"
-                placeholder="color 5"
-                name="color5"
-                onChange={(e) => {setcolor5(e.target.value)}}
-                // value={values.title}
-                // {...register("title")}
-              />
-
-              <textarea
-                rows="4"
-                cols="50"
-                className="mt-[1rem] p-[0.5rem] rounded-[10px]"
-                placeholder="Description*"
-                name="description"
-                onChange={(e) => {setdescription(e.target.value)}}
-                // value={values.description}
-                // {...register("description")}
-              />
-              {errors.description && <p className="error">{errors.description}</p>}
-
-              <h2 className="mt-[1rem]">Anniversary Sales?</h2>
-              <div>
-                <input
-                  type="checkbox"
-                  id="Highlight"
-                  name="Highlight"
-                  className="mr-[0.5rem]"
-                  onChange={setHigh}
-                />
-                <label for="MIN">YES</label>
-              </div>
 
               <div className="relative">
                 <input
-                  className="mt-[1rem] py-[0.5rem] rounded-[10px] px-[3rem] w-[100%]"
+                  className="mt-[1rem] py-[0.5rem] text-black rounded-[10px] px-[3rem] w-[100%]"
                   type="number"
-                  placeholder="Price*"
+                  placeholder="Price"
                   name="price"
                   onChange={(e) => {
-                    setprices(e.target.value)
+                    setprices1(e.target.value)
                   }}
                   // value={Number(values.price)}
                   // {...register("price")}
@@ -442,11 +309,11 @@ export function AddProduct() {
               </div>
               {errors.price && <p className="error">{errors.price}</p>}
 
-
+              
               <input
                 type="submit"
                 value={loading ? "Sending Product..." : "Post Ad"}
-                className="text-center bg-[#3EB812] text-white mt-[2rem] border py-[0.5rem] rounded-[10px] items-center"
+                className="text-center bg-[#2596be] text-white mt-[2rem] border py-[0.5rem] rounded-[10px] items-center"
               />
             </form>
           </div>

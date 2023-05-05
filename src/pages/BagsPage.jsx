@@ -30,7 +30,6 @@ export function ProductsPage() {
     setempty(false);
     db.collection("Products")
     .where("category", "==", "Fusion Bags")
-    .where("AprilSales", "==", false)
       .get()
       .then((collections) => {
         const cloths = collections.docs.map((cloths) => {
@@ -78,7 +77,7 @@ export function ProductsPage() {
   return (
     <div>
       <div className="lg:absolute lg:top-[13%] pt-[70px] lg:left-[35%] lg:z-[-1] lg:w-[60%]">
-        <p className="mt-[rem] font-bold text-2xl text-center border-y border-[#deab24] py-[1rem]">Fusion Bags</p>
+        <p className="mt-[rem] font-bold text-2xl text-center border-y border-[#fc5810] py-[1rem]">Foot Candy</p>
         <Search />
 
         {/* <p className="w-[100%] flex flex-col items-center my-[1rem] loaderContainer">

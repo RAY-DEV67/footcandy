@@ -24,11 +24,10 @@ export function TopCard(props) {
 
   const [saves, setsaves] = useState([]);
   const [loadingCart, setloadingCart] = useState(false);
+  const [size, setsize] = useState(`${post.size1}`);
 
 
   const [user] = useAuthState(auth);
-
-  console.log(user)
   const navigate = useNavigate();
 
   const docRef = collection(db, "Cart");
@@ -52,24 +51,14 @@ export function TopCard(props) {
     setloadingCart(true);
     try {
       const newDoc = await addDoc(docRef, {
-        userId: user?.uid,
-        email: user?.email,
+          userId: user?.uid,
         postId: post.id,
         images: post.images,
-        images2: `${post.images2 ? post.images2 : ""}`,
-        images3: `${post.images3 ? post.images3 : ""}`,
-        images4: `${post.images4 ? post.images4 : ""}`,
-        images5: `${post.images5 ? post.images5 : ""}`,
         title: post.title,
-        price: post.price,
-        description: post.description,
-        category: post.category,
-        color: `${post.color ? post.color : ""}`,
-        color2: `${post.color2 ? post.color2 : ""}`,
-        color3: `${post.color3 ? post.color3 : ""}`,
-        color4: `${post.color4 ? post.color4 : ""}`,
-        color5: `${post.color5 ? post.color5 : ""}`,
+        price1: post.price1,
+        size1: post.size1,
       });
+  
       console.log("DocumentAdded");
       setcart(cart + 1);
       setloadingCart(false);
@@ -82,7 +71,7 @@ export function TopCard(props) {
         console.log(saves);
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -121,12 +110,12 @@ export function TopCard(props) {
   };
 
   return (
-    <div className="topcard lg:w-[25vw] w-[42vw] border-y border-[#deab24] rounded-[10px]">
+    <div className="topcard lg:w-[25vw] w-[45vw] border-y border-[#fc5810] rounded-[10px]">
       <div className="relative">
         <img
           src={post.images}
           alt="Product"
-          className="w-[44vw] h-[200px] bg-white object-contain rounded-[10px]"
+          className="w-[44vw] h-[200px] object-contain rounded-[10px]"
           onClick={() => {
             // setProductsId(post.id);
             navigate(`/Buy/Products/${post.category}/${post.id}`);
@@ -136,17 +125,30 @@ export function TopCard(props) {
       </div>
 
       <div className="text-left mx-[0.5rem] mt-[0.5rem] flex justify-between">
-        <h1>{post.title}</h1>
+        <h1 className="text-sm">{post.title}</h1>
+      </div>
+
+      <div className="mt-[1rem]">
+        <p className="text-xs">Sizes</p>
+        <div className="flex">
+          {post.size1 ? <p onClick={() => {setsize(post.size1)}} className={`px-[0.2rem] text-center text-xs rounded-sm mt-[0.3rem] mb-[0.5rem] border font-bold ${size == post.size1 ? "bg-[#2596be] text-white" : ""}`}>{post.size1}</p> : ""}
+          {post.size2 ? <p onClick={() => {setsize(post.size2)}} className={`px-[0.2rem] mx-[0.5rem] text-xs text-center rounded-sm mt-[0.3rem] mb-[0.5rem] border font-bold ${size == post.size2 ? "bg-[#2596be] text-white" : ""}`}>{post.size2}</p> : ""}
+          {post.size3 ? <p onClick={() => {setsize(post.size3)}} className={`px-[0.2rem] text-center text-xs rounded-sm mt-[0.3rem] mb-[0.5rem] border font-bold ${size == post.size3 ? "bg-[#2596be] text-white" : ""}`}>{post.size3}</p> : ""}
+        </div>
       </div>
       <div className="text-left mx-[0.5rem]">
-        <h1 className="font-bold mt-[0.5rem]">
-          {formatCur(post.price, "en-NG", "NGN")}
-        </h1>
+        {size == post.size1 ? <h1 className="font-bold mt-[0.5rem]">
+          {formatCur(post.price1, "en-NG", "NGN")}
+        </h1> : size == post.size2 ? <h1 className="font-bold mt-[0.5rem]">
+          {formatCur(post.price2, "en-NG", "NGN")}
+        </h1> : size == post.size3 ? <h1 className="font-bold mt-[0.5rem]">
+          {formatCur(post.price3, "en-NG", "NGN")}
+        </h1> : ""}
       </div>
 
       <div className="mx-[1rem] flex justify-center">
         <div
-          className="p-[0.1rem] px-[1rem] rounded-sm mt-[1rem] mb-[0.5rem] bg-[#deab24]"
+          className="p-[0.1rem] px-[1rem] rounded-sm mt-[1rem] mb-[0.5rem] bg-[#fc5810] text-white"
           onClick={() => {
             !user
               ? navigate("/Profile")
@@ -160,7 +162,7 @@ export function TopCard(props) {
               <div className="Cartloading-spinner"></div>
             </div>
           ) : (
-            <p className="text-white text-sm">
+            <p className="text-white font-bold text-sm">
               {hasProductBeenSaved ? "Added To Cart!!" : "Add To Cart "}
             </p>
           )}

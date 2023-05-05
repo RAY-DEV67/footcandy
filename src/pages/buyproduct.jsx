@@ -188,7 +188,7 @@ const [i, seti] = useState(0);
               </div>
 
               <div className="mx-[1rem] flex justify-center">
-        <div className="py-[0.5rem] px-[1rem] rounded-sm mt-[1rem] w-[130px] mb-[0.5rem] bg-[#deab24]" onClick={() => {
+        <div className="py-[0.5rem] px-[1rem] rounded-sm mt-[1rem] w-[130px] mb-[0.5rem] bg-[#fc5810]" onClick={() => {
                 !user
                   ? navigate("/Profile")
                   : hasProductBeenSaved

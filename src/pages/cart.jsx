@@ -104,13 +104,13 @@ export function Cart() {
               <div onClick={() => {
                 navigate(`/Checkout/${saved[0].userId}`)
               }} className="flex flex-col items-center">
-                <button className="text-white rounded-[20px] bg-[#deab24] font-bold mt-[2rem] py-[0.5rem] px-[1rem]">
+                <button className="text-white rounded-[20px] bg-[#fc5810] font-bold mt-[2rem] py-[0.5rem] px-[1rem]">
                   Check Out
                 </button>
               </div>
             </div>
           )}
-          <p className="text-white lg:hidden text-center bg-[#deab24] fixed text-[10px] w-[4%] left-[93%] top-[3%] z-20 rounded-full">
+          <p className="text-white lg:hidden text-center bg-[#fc5810] fixed text-[10px] w-[4%] left-[93%] top-[3%] z-20 rounded-full">
             {saved.length}
           </p>
         </div>
