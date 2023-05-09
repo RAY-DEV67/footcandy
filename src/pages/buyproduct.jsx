@@ -175,7 +175,7 @@ const [i, seti] = useState(0);
       <div className="buyProductBorder mb-[1rem] mt-[1rem] mx-[1rem] pb-[1rem] text-left">
         <p className="text-2xl font-bold mb-[0.5rem]">{buyProduct?.title}</p>
         <div className="flex justify-left">
-          <p className="ml-[0.2rem] text-xl">{formatCur(buyProduct?.price , 'en-NG' , "NGN")}</p>
+          <p className="ml-[0.2rem] text-xl">{formatCur(buyProduct?.price1 , 'en-NG' , "NGN")}</p>
         </div>
       </div>
 

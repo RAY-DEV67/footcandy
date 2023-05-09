@@ -218,28 +218,6 @@ export function AddProduct() {
                       }}
                     />
                   </div> 
-                  
-                  <div>
-                    <input
-                      className="mt-[1rem]"
-                      type="file"
-                      name="photos4"
-                      onChange={(event) => {
-                        setfile4(event.target.files[0]);
-                      }}
-                    />
-                  </div> 
-                  
-                   <div>
-                    <input
-                      className="mt-[1rem]"
-                      type="file"
-                      name="photos5"
-                      onChange={(event) => {
-                        setfile5(event.target.files[0]);
-                      }}
-                    />
-                  </div> 
                 </div>
                 <p className="text-[12px] mt-[1rem]">
                   Each picture must not exceed 5MB
