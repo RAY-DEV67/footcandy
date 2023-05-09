@@ -129,9 +129,9 @@ export function TopCard(props) {
       </div>
 
       <div className="mt-[1rem]">
-        <p className="text-xs">Sizes</p>
-        <div className="flex">
-          {post.size1 ? <p onClick={() => {setsize(post.size1)}} className={`px-[0.2rem] text-center text-xs rounded-sm mt-[0.3rem] mb-[0.5rem] border font-bold ${size == post.size1 ? "bg-[#2596be] text-white" : ""}`}>{post.size1}</p> : ""}
+        <div className="flex items-center">
+        <p className="text-xs mr-[0.3rem]">Sizes: </p>
+          {post.size1 ? <p onClick={() => {setsize(post.size1)}} className={`px-[0.2rem] text-center text-xs rounded-sm mt-[0.3rem] mb-[0.5rem] border font-bold ${size == post.size1 ? "bg-[#fc5810] text-white" : ""}`}>{post.size1}</p> : ""}
           {post.size2 ? <p onClick={() => {setsize(post.size2)}} className={`px-[0.2rem] mx-[0.5rem] text-xs text-center rounded-sm mt-[0.3rem] mb-[0.5rem] border font-bold ${size == post.size2 ? "bg-[#2596be] text-white" : ""}`}>{post.size2}</p> : ""}
           {post.size3 ? <p onClick={() => {setsize(post.size3)}} className={`px-[0.2rem] text-center text-xs rounded-sm mt-[0.3rem] mb-[0.5rem] border font-bold ${size == post.size3 ? "bg-[#2596be] text-white" : ""}`}>{post.size3}</p> : ""}
         </div>

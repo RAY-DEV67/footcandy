@@ -86,7 +86,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <div className="lg:w-[100vw] lg:flex lg:flex-col lg:items-center">
             <Link to="/">
-<p className="py-[1rem]">FootCandy NG</p>
+<p className="py-[1rem] foot text-xl">FootCandy NG</p>
           </Link>
           </div>
           <div className="flex justify-between lg:hidden">

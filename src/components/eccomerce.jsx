@@ -77,7 +77,7 @@ import {
           <div className="ml-[1rem]">
             <div>
               <div className="flex justify-between w-[40vw]">
-                <h1 className="text-[#fc5810] font-bold mt-[0.5rem] text-left">{formatCur(post.price , 'en-NG' , "NGN")}</h1>
+                <h1 className="text-[#fc5810] font-bold mt-[0.5rem] text-left">{formatCur(post.price1 , 'en-NG' , "NGN")}</h1>
                 {loading ? (
               <div className="spinner-container px-[0.5rem] pt-[0.5rem] flex justify-center items-center">
                 <div className="Cartloading-spinner"></div>

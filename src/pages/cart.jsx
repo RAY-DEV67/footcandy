@@ -38,7 +38,7 @@ export function Cart() {
         });
         const prices = collections.docs.map((cloths) => {
           console.log(cloths.data().price);
-          return cloths.data().price;
+          return cloths.data().price1;
         });
         // price.push(cloths.data().price)
         setsaved(cloths);
@@ -104,9 +104,9 @@ export function Cart() {
               <div onClick={() => {
                 navigate(`/Checkout/${saved[0].userId}`)
               }} className="flex flex-col items-center">
-                <button className="text-white rounded-[20px] bg-[#fc5810] font-bold mt-[2rem] py-[0.5rem] px-[1rem]">
+                {/* <button className="text-white rounded-[20px] bg-[#fc5810] font-bold mt-[2rem] py-[0.5rem] px-[1rem]">
                   Check Out
-                </button>
+                </button> */}
               </div>
             </div>
           )}

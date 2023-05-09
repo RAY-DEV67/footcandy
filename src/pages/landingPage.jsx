@@ -26,7 +26,6 @@ export function LandingPage() {
     try {
       db.collection("Products")
         .limit(10)
-        .where("category", "==", "Fusion Bags")
         .get()
         .then((collections) => {
           const cloths = collections.docs.map((cloths) => {
@@ -60,7 +59,7 @@ export function LandingPage() {
       <Search />
 
       <div className="flex justify-between p-2 px-[1.5rem] mb-[1rem] text-white bg-[#fc5810] font-bold rounded-[20px] heading">
-        <h2>Fusion Bags</h2>
+        <h2>Foot Collection</h2>
         <p
           onClick={() => {
             navigate("/All-Bags-Products");
